@@ -31,7 +31,7 @@ export class SwitchesPageComponent {
     for (const key of Object.keys(errors)) {
       switch( key ){
         case 'required':
-          return 'This field is required';
+          return 'This field must be completed';
         case 'requiredTrue':
           return 'this field must be true';
         default: break;
