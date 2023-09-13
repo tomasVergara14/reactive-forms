@@ -10,7 +10,7 @@ import * as customValidators from 'src/app/shared/validators/validators';
 export class RegisterPageComponent {
 
   public myForm: FormGroup = this.fb.group({
-    name:['',[Validators.required]],
+    name:['',[Validators.required, Validators.pattern(customValidators.firstNameAndLastnamePattern)]],
     email:['',[Validators.required, Validators.pattern(customValidators.emailPattern)]],
     username:['', [Validators.required, customValidators.cantBeStrider]],
     password:['',[Validators.required, Validators.minLength(6)]],
