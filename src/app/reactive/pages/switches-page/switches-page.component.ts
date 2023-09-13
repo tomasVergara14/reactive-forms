@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ValidatorService } from 'src/app/shared/service/validators.service';
 
 @Component({
   templateUrl: './switches-page.component.html',
@@ -15,12 +16,13 @@ export class SwitchesPageComponent {
   })
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private validatorService: ValidatorService,
   ){}
 
 
   isValidField( field: string ):boolean | null{
-    return this.myForm.controls[field].errors && this.myForm.controls[field].touched
+    return this.validatorService.isValidField(this.myForm, field)
   }
 
   getFieldError( field: string ): string | null{

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ValidatorService } from 'src/app/shared/service/validators.service';
 
 @Component({
   templateUrl: './dynamic-page.component.html',
@@ -19,7 +20,8 @@ export class DynamicPageComponent {
   public newFavorite: FormControl = new FormControl()
 
   constructor( 
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private validatorService: ValidatorService
   ){}
 
   get favoriteGames(){
@@ -28,7 +30,7 @@ export class DynamicPageComponent {
 
 
   isValidField( field: string ):boolean | null{
-    return this.myForm.controls[field].errors && this.myForm.controls[field].touched
+    return this.validatorService.isValidField(this.myForm, field)
   }
 
   getFieldError( field: string ): string | null{
